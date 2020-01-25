@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_102048) do
+ActiveRecord::Schema.define(version: 2020_01_25_111218) do
+
+  create_table "friends", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.index ["user_id", "friend_id"], name: "index_friends_on_user_id_and_friend_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
