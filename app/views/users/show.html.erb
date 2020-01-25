@@ -34,6 +34,25 @@
       <%= friend.name %>
     </p>
   <% end %>
+
+  <strong> Messages:</strong>
+  <% @user.messages.each_with_index do |message, index| %>
+    <p>
+      <strong>Body:</strong>
+      <%= message.body %>
+    </p>
+
+    <p>
+      <strong>Sender:</strong>
+      <%= message.sender.name %>
+    </p>
+
+    <p>
+      <strong>Receiver:</strong>
+      <%= message.receiver.name %>
+    </p>
+  <% end %>
+
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
