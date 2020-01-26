@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        save_friends
+        save_friends(@user)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
     end
 
     def save_friends(user)
-      friends = User.where(id: parmas[:friends]).where.not(id: user.friends.ids)
+      friends = User.where(id: params[:friends]).where.not(id: user.friends.ids)
       user.friends << friends if friends.present?
     end
 
